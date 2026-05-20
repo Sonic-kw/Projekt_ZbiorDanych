@@ -1,0 +1,600 @@
+2026-05-20 20:38:11,071 - main - INFO - Starting scraping process...
+2026-05-20 20:38:11,758 - browser - INFO - Browser started successfully.
+2026-05-20 20:38:11,900 - crawler - INFO - Scraping page 1: https://www.otomoto.pl/motocykle-i-quady
+2026-05-20 20:38:16,221 - crawler - INFO - Scraping page 2: https://www.otomoto.pl/motocykle-i-quady?page=2
+2026-05-20 20:38:19,785 - crawler - INFO - Scraping page 3: https://www.otomoto.pl/motocykle-i-quady?page=3
+2026-05-20 20:38:24,988 - crawler - INFO - Scraping page 4: https://www.otomoto.pl/motocykle-i-quady?page=4
+2026-05-20 20:38:28,859 - crawler - INFO - Scraping page 5: https://www.otomoto.pl/motocykle-i-quady?page=5
+2026-05-20 20:38:32,975 - crawler - INFO - Scraping page 6: https://www.otomoto.pl/motocykle-i-quady?page=6
+2026-05-20 20:38:36,869 - crawler - INFO - Scraping page 7: https://www.otomoto.pl/motocykle-i-quady?page=7
+2026-05-20 20:38:40,110 - crawler - INFO - Scraping page 8: https://www.otomoto.pl/motocykle-i-quady?page=8
+2026-05-20 20:38:44,539 - crawler - INFO - Scraping page 9: https://www.otomoto.pl/motocykle-i-quady?page=9
+2026-05-20 20:38:48,487 - crawler - INFO - Scraping page 10: https://www.otomoto.pl/motocykle-i-quady?page=10
+2026-05-20 20:38:52,026 - browser - INFO - Browser stopped.
+2026-05-20 20:38:52,028 - crawler - INFO - Successfully scraped 299 listings.
+2026-05-20 20:38:52,032 - crawler - INFO - Data saved to data/raw/raw_listings.csv
+2026-05-20 20:38:52,032 - main - INFO - Starting data cleaning...
+2026-05-20 20:38:52,035 - normalizer - INFO - Brand names normalized.
+2026-05-20 20:38:52,038 - filter - INFO - Removed 24 duplicate records.
+2026-05-20 20:38:52,040 - filter - INFO - Removed 4 incomplete records.
+2026-05-20 20:38:52,041 - filter - INFO - Removed 25 outliers from column price.
+2026-05-20 20:38:52,042 - filter - INFO - Removed 58 outliers from column mileage.
+2026-05-20 20:38:52,042 - filter - INFO - Removed 2 outliers from column year.
+2026-05-20 20:38:52,044 - main - INFO - Processed data saved to data/processed/cleaned_listings.csv
+2026-05-20 20:38:52,044 - main - INFO - Starting market analysis...
+2026-05-20 20:38:52,046 - main - INFO - Market Shares:
+brand
+QJMOTOR       16.129032
+Honda          8.602151
+Segway         7.526882
+CFMoto         6.451613
+Zontes         5.913978
+ASIX           4.301075
+Barton         4.301075
+Yamaha         3.763441
+KOVE           3.763441
+Suzuki         3.225806
+KAYO           3.225806
+Talaria        2.688172
+VOGE           2.688172
+Loncin         2.150538
+BMW            2.150538
+HISUN          2.150538
+KTM            2.150538
+Kawasaki       1.612903
+Vespa          1.612903
+Inny           1.612903
+Junak          1.612903
+Zipp           1.612903
+Romet          1.075269
+Husqvarna      1.075269
+Aprilia        1.075269
+Kymco          1.075269
+Benelli        0.537634
+KXD            0.537634
+ODES           0.537634
+Alfarad        0.537634
+TGB            0.537634
+Morbidelli     0.537634
+Goes           0.537634
+Linhai         0.537634
+Triumph        0.537634
+Daytona        0.537634
+MRF            0.537634
+Piaggio        0.537634
+Name: proportion, dtype: float64
+2026-05-20 20:38:52,460 - statistics - INFO - Market structure plot saved to results/market_structure.png
+2026-05-20 20:38:52,594 - statistics - INFO - Distributions plot saved to results/distributions.png
+2026-05-20 20:38:52,690 - statistics - INFO - Regression plot for year saved to results/regression.png
+2026-05-20 20:38:52,781 - statistics - INFO - Regression plot for mileage saved to results/regression.png
+2026-05-20 20:38:52,922 - statistics - INFO - Correlation matrix saved to results/correlation.png
+2026-05-20 20:38:52,960 - clustering - INFO - Clustering completed with 3 clusters.
+2026-05-20 20:38:53,048 - statistics - INFO - Cluster plot saved to results/clusters.png
+2026-05-20 20:38:53,052 - regression - INFO - Model trained. MAE: 13442.87, R2: -0.26
+2026-05-20 20:38:53,053 - bargain_finder - INFO - Found 85 potential bargains.
+2026-05-20 20:38:53,053 - main - INFO - Analysis complete. Found 85 bargains.
+2026-05-20 20:38:53,058 - main - INFO - Bargains preview:
+      brand      model    year  mileage  capacity  power    price        type  cluster  predicted_price
+8   QJMOTOR  SRT 450RX  2026.0      1.0    4503.0   48.0  22990.0  Motorcycle        0     27113.812549
+12  QJMOTOR    SRV 125  2026.0      1.0    1253.0   15.0  10990.0  Motorcycle        1     27113.812549
+18  Aprilia      Tuono  2025.0      1.0    1253.0   15.0  18900.0  Motorcycle        1     29936.351311
+20      KXD       Inny  2025.0      1.0    1243.0   14.0   3700.0  Motorcycle        1     29936.351311
+31   CFMoto     CForce  2024.0      1.0    4953.0   35.0  27749.0  Motorcycle        1     32758.890073
+2026-05-20 20:42:40,089 - main - INFO - Starting scraping process...
+2026-05-20 20:42:40,640 - browser - INFO - Browser started successfully.
+2026-05-20 20:42:40,837 - crawler - INFO - Scraping page 1: https://www.otomoto.pl/motocykle-i-quady
+2026-05-20 20:43:00,728 - main - INFO - Starting scraping process...
+2026-05-20 20:43:01,013 - browser - INFO - Browser started successfully.
+2026-05-20 20:43:01,076 - crawler - INFO - Scraping page 1: https://www.otomoto.pl/motocykle-i-quady
+2026-05-20 20:43:07,219 - crawler - INFO - Scraping page 2: https://www.otomoto.pl/motocykle-i-quady?page=2
+2026-05-20 20:43:46,391 - main - INFO - Starting scraping process...
+2026-05-20 20:43:46,691 - browser - INFO - Browser started successfully.
+2026-05-20 20:43:46,740 - crawler - INFO - Scraping page 1: https://www.otomoto.pl/motocykle-i-quady
+2026-05-20 20:43:50,477 - crawler - INFO - Scraping page 2: https://www.otomoto.pl/motocykle-i-quady?page=2
+2026-05-20 20:43:54,284 - crawler - INFO - Scraping page 3: https://www.otomoto.pl/motocykle-i-quady?page=3
+2026-05-20 20:43:58,130 - crawler - INFO - Scraping page 4: https://www.otomoto.pl/motocykle-i-quady?page=4
+2026-05-20 20:44:02,824 - crawler - INFO - Scraping page 5: https://www.otomoto.pl/motocykle-i-quady?page=5
+2026-05-20 20:44:06,467 - main - INFO - Starting scraping process...
+2026-05-20 20:44:06,772 - browser - INFO - Browser started successfully.
+2026-05-20 20:44:06,819 - crawler - INFO - Scraping page 1: https://www.otomoto.pl/motocykle-i-quady
+2026-05-20 20:49:04,977 - main - INFO - Starting scraping process...
+2026-05-20 20:49:05,548 - browser - INFO - Browser started successfully.
+2026-05-20 20:49:05,736 - crawler - INFO - Scraping page 1: https://www.otomoto.pl/motocykle-i-quady
+2026-05-20 20:49:05,736 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady...
+2026-05-20 20:49:09,192 - parser - DEBUG - Found 22 potential listing items on the page.
+2026-05-20 20:49:09,223 - parser - DEBUG - Found: KTM Duke | Price: 16 400 | Year: 2022
+2026-05-20 20:49:09,243 - parser - DEBUG - Found: Honda CB | Price: 16 400 | Year: 2021
+2026-05-20 20:49:09,341 - parser - DEBUG - Found: Honda VFR | Price: 17 000 | Year: 2011
+2026-05-20 20:49:09,361 - parser - DEBUG - Found: Benelli Inny | Price: 38 000 | Year: 2026
+2026-05-20 20:49:09,381 - parser - DEBUG - Found: Suzuki Bandit | Price: 9 600 | Year: 2006
+2026-05-20 20:49:09,400 - parser - DEBUG - Found: CFMoto CForce | Price: 61 899 | Year: 2025
+2026-05-20 20:49:09,422 - parser - DEBUG - Found: Suzuki Bandit | Price: 20 800 | Year: 2009
+2026-05-20 20:49:09,442 - parser - DEBUG - Found: Ducati Multistrada | Price: 78 500 | Year: 2023
+2026-05-20 20:49:09,461 - parser - DEBUG - Found: CFMoto CForce | Price: 62 499 | Year: 2025
+2026-05-20 20:49:09,482 - parser - DEBUG - Found: Suzuki Hayabusa | Price: 85 900 | Year: 2025
+2026-05-20 20:49:09,498 - parser - DEBUG - Found: CFMoto CForce | Price: 30 900 | Year: 2025
+2026-05-20 20:49:09,519 - parser - DEBUG - Found: Romet K | Price: 29 999 | Year: 2026
+2026-05-20 20:49:09,540 - parser - DEBUG - Found: QJMOTOR SRT 450RX | Price: 22 990 | Year: 2026
+2026-05-20 20:49:09,560 - parser - DEBUG - Found: CFMoto CForce | Price: 49 899 | Year: 2024
+2026-05-20 20:49:09,578 - parser - DEBUG - Found: ELECTRORIDE Futuri 3 | Price: 18 999 | Year: 2023
+2026-05-20 20:49:09,602 - parser - DEBUG - Found: Kawasaki Ninja | Price: 11 900 | Year: 2021
+2026-05-20 20:49:09,624 - parser - DEBUG - Found: QJMOTOR SRV 125 | Price: 10 990 | Year: 2026
+2026-05-20 20:49:09,642 - parser - DEBUG - Found: Yamaha Virago | Price: 12 800 | Year: 2000
+2026-05-20 20:49:09,662 - parser - DEBUG - Found: CFMoto CForce | Price: 41 889 | Year: 2024
+2026-05-20 20:49:09,682 - parser - DEBUG - Found: Husqvarna 701 | Price: 55 900 | Year: 2025
+2026-05-20 20:49:09,700 - parser - DEBUG - Found: CFMoto CForce | Price: 49 899 | Year: 2024
+2026-05-20 20:49:09,720 - parser - DEBUG - Found: CFMoto CForce | Price: 27 749 | Year: 2024
+2026-05-20 20:49:09,775 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" content="oto...
+2026-05-20 20:49:09,776 - crawler - INFO - Scraping page 2: https://www.otomoto.pl/motocykle-i-quady?page=2
+2026-05-20 20:49:09,776 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=2...
+2026-05-20 20:49:14,210 - parser - DEBUG - Found 32 potential listing items on the page.
+2026-05-20 20:49:14,237 - parser - DEBUG - Found: Aprilia Tuono | Price: 18 900 | Year: 2025
+2026-05-20 20:49:14,259 - parser - DEBUG - Found: Benelli TRK 702X | Price: 29 900 | Year: 2026
+2026-05-20 20:49:14,278 - parser - DEBUG - Found: KXD Inny | Price: 3 700 | Year: 2025
+2026-05-20 20:49:14,294 - parser - DEBUG - Found: Suzuki GSR | Price: 21 600 | Year: 2011
+2026-05-20 20:49:14,315 - parser - DEBUG - Found: Loncin XWOLF 550 | Price: 25 990 | Year: 2025
+2026-05-20 20:49:14,335 - parser - DEBUG - Found: Kawasaki Z 900 | Price: 35 800 | Year: 2024
+2026-05-20 20:49:14,355 - parser - DEBUG - Found: Suzuki Intruder | Price: 16 900 | Year: 2003
+2026-05-20 20:49:14,374 - parser - DEBUG - Found: ODES Patchcross | Price: 30 990 | Year: 2025
+2026-05-20 20:49:14,393 - parser - DEBUG - Found: Kawasaki Estrella | Price: 27 900 | Year: 2014
+2026-05-20 20:49:14,412 - parser - DEBUG - Found: Yamaha XJ | Price: 15 900 | Year: 2009
+2026-05-20 20:49:14,431 - parser - DEBUG - Found: BMW Adventure | Price: 124 850 | Year: 2026
+2026-05-20 20:49:14,450 - parser - DEBUG - Found: BMW F | Price: 48 800 | Year: 2025
+2026-05-20 20:49:14,471 - parser - DEBUG - Found: Honda VT | Price: 13 500 | Year: 2003
+2026-05-20 20:49:14,490 - parser - DEBUG - Found: CFMoto CForce | Price: 27 749 | Year: 2024
+2026-05-20 20:49:14,508 - parser - DEBUG - Found: Kawasaki ER | Price: 6 200 | Year: 2009
+2026-05-20 20:49:14,527 - parser - DEBUG - Found: Alfarad Inny | Price: 6 800 | Year: 2025
+2026-05-20 20:49:14,547 - parser - DEBUG - Found: Honda Deauville | Price: 8 000 | Year: 2007
+2026-05-20 20:49:14,567 - parser - DEBUG - Found: Honda CB | Price: 28 900 | Year: 2019
+2026-05-20 20:49:14,585 - parser - DEBUG - Found: BMW F | Price: 25 900 | Year: 2019
+2026-05-20 20:49:14,605 - parser - DEBUG - Found: Kawasaki Z 900 | Price: 54 900 | Year: 2026
+2026-05-20 20:49:14,627 - parser - DEBUG - Found: CFMoto CForce | Price: 59 489 | Year: 2025
+2026-05-20 20:49:14,647 - parser - DEBUG - Found: Vespa GTS | Price: 24 999 | Year: 2025
+2026-05-20 20:49:14,667 - parser - DEBUG - Found: Vespa GTS | Price: 26 000 | Year: 2025
+2026-05-20 20:49:14,686 - parser - DEBUG - Found: Inny Inny | Price: 33 000 | Year: 2025
+2026-05-20 20:49:14,705 - parser - DEBUG - Found: BMW K | Price: 123 500 | Year: 2025
+2026-05-20 20:49:14,724 - parser - DEBUG - Found: Kawasaki Z 900 | Price: 21 800 | Year: 2019
+2026-05-20 20:49:14,744 - parser - DEBUG - Found: Yamaha R6 | Price: 18 900 | Year: 2006
+2026-05-20 20:49:14,763 - parser - DEBUG - Found: Inny Inny | Price: 79 900 | Year: 2005
+2026-05-20 20:49:14,782 - parser - DEBUG - Found: KTM Duke | Price: 24 900 | Year: 2018
+2026-05-20 20:49:14,801 - parser - DEBUG - Found: Harley-Davidson Softail Heritage Classic | Price: 90 000 | Year: 2009
+2026-05-20 20:49:14,821 - parser - DEBUG - Found: BMW S | Price: 94 700 | Year: 2025
+2026-05-20 20:49:14,841 - parser - DEBUG - Found: BMW R | Price: 115 200 | Year: 2025
+2026-05-20 20:49:14,894 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=2" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:49:14,895 - crawler - INFO - Scraping page 3: https://www.otomoto.pl/motocykle-i-quady?page=3
+2026-05-20 20:49:14,895 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=3...
+2026-05-20 20:49:18,901 - parser - DEBUG - Found 31 potential listing items on the page.
+2026-05-20 20:49:18,932 - parser - DEBUG - Found: BMW R | Price: 117 200 | Year: 2025
+2026-05-20 20:49:18,951 - parser - DEBUG - Found: Ducati Panigale V4S | Price: 62 000 | Year: 2022
+2026-05-20 20:49:18,970 - parser - DEBUG - Found: ASIX XB | Price: 5 599 | Year: 2026
+2026-05-20 20:49:18,988 - parser - DEBUG - Found: Junak M | Price: 14 499 | Year: 2025
+2026-05-20 20:49:19,007 - parser - DEBUG - Found: Kawasaki Z | Price: 17 900 | Year: 2012
+2026-05-20 20:49:19,025 - parser - DEBUG - Found: Honda Shadow | Price: 18 500 | Year: 2012
+2026-05-20 20:49:19,044 - parser - DEBUG - Found: Yamaha XJ | Price: 19 900 | Year: 2014
+2026-05-20 20:49:19,062 - parser - DEBUG - Found: Ducati Streetfighter V4 | Price: 69 900 | Year: 2023
+2026-05-20 20:49:19,079 - parser - DEBUG - Found: ASIX E-M11 | Price: 3 499 | Year: 2026
+2026-05-20 20:49:19,098 - parser - DEBUG - Found: Romet Inny | Price: 8 199 | Year: 2025
+2026-05-20 20:49:19,117 - parser - DEBUG - Found: TGB Blade | Price: 41 990 | Year: 2024
+2026-05-20 20:49:19,135 - parser - DEBUG - Found: Barton Flash | Price: 4 999 | Year: 2025
+2026-05-20 20:49:19,154 - parser - DEBUG - Found: Barton Hyper | Price: 12 699 | Year: 2026
+2026-05-20 20:49:19,173 - parser - DEBUG - Found: HISUN Inny | Price: 29 890 | Year: 2025
+2026-05-20 20:49:19,191 - parser - DEBUG - Found: Segway AT5 | Price: 24 500 | Year: 2025
+2026-05-20 20:49:19,210 - parser - DEBUG - Found: HISUN Inny | Price: 63 990 | Year: 2025
+2026-05-20 20:49:19,230 - parser - DEBUG - Found: Morbidelli T1002VX | Price: 36 990 | Year: 2025
+2026-05-20 20:49:19,248 - parser - DEBUG - Found: Zontes 703F | Price: 36 499 | Year: 2025
+2026-05-20 20:49:19,266 - parser - DEBUG - Found: ASIX XB | Price: 5 599 | Year: 2026
+2026-05-20 20:49:19,284 - parser - DEBUG - Found: ASIX XB | Price: 5 999 | Year: 2026
+2026-05-20 20:49:19,303 - parser - DEBUG - Found: Segway Snarler AT10 | Price: 40 500 | Year: 2025
+2026-05-20 20:49:19,347 - parser - DEBUG - Found: Goes Terrox | Price: 44 900 | Year: 2025
+2026-05-20 20:49:19,367 - parser - DEBUG - Found: HISUN Inny | Price: 69 900 | Year: 2025
+2026-05-20 20:49:19,385 - parser - DEBUG - Found: Junak M12 | Price: 21 999 | Year: 2026
+2026-05-20 20:49:19,404 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 33 990 | Year: 2025
+2026-05-20 20:49:19,421 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 28 500 | Year: 2025
+2026-05-20 20:49:19,438 - parser - DEBUG - Found: Talaria Sting R | Price: 21 490 | Year: 2024
+2026-05-20 20:49:19,456 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 28 500 | Year: 2025
+2026-05-20 20:49:19,476 - parser - DEBUG - Found: QJMOTOR SRK 800RR | Price: 31 490 | Year: 2025
+2026-05-20 20:49:19,494 - parser - DEBUG - Found: QJMOTOR SRK 125R | Price: 12 990 | Year: 2025
+2026-05-20 20:49:19,514 - parser - DEBUG - Found: Loncin XWOLF 550 | Price: 22 490 | Year: 2025
+2026-05-20 20:49:19,573 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=3" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:49:19,573 - crawler - INFO - Scraping page 4: https://www.otomoto.pl/motocykle-i-quady?page=4
+2026-05-20 20:49:19,573 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=4...
+2026-05-20 20:49:22,347 - parser - DEBUG - Found 31 potential listing items on the page.
+2026-05-20 20:49:22,375 - parser - DEBUG - Found: Segway AT5 | Price: 26 490 | Year: 2025
+2026-05-20 20:49:22,392 - parser - DEBUG - Found: Talaria XXX | Price: 17 499 | Year: 2025
+2026-05-20 20:49:22,414 - parser - DEBUG - Found: VOGE 900DSX | Price: 42 700 | Year: 2025
+2026-05-20 20:49:22,432 - parser - DEBUG - Found: Yamaha R125 | Price: 25 600 | Year: 2026
+2026-05-20 20:49:22,450 - parser - DEBUG - Found: Zontes 125 G1 Spoke | Price: 17 499 | Year: 2025
+2026-05-20 20:49:22,469 - parser - DEBUG - Found: KOVE 510X | Price: 24 899 | Year: 2026
+2026-05-20 20:49:22,488 - parser - DEBUG - Found: Zontes Inny | Price: 22 490 | Year: 2025
+2026-05-20 20:49:22,507 - parser - DEBUG - Found: QJMOTOR SRV 125 | Price: 15 990 | Year: 2025
+2026-05-20 20:49:22,528 - parser - DEBUG - Found: VOGE 625DSX | Price: 30 900 | Year: 2026
+2026-05-20 20:49:22,546 - parser - DEBUG - Found: Zontes Inny | Price: 32 490 | Year: 2026
+2026-05-20 20:49:22,564 - parser - DEBUG - Found: KOVE 510F | Price: 22 899 | Year: 2025
+2026-05-20 20:49:22,582 - parser - DEBUG - Found: KOVE 800X Rally | Price: 42 899 | Year: 2026
+2026-05-20 20:49:22,602 - parser - DEBUG - Found: KOVE 800X Pro | Price: 38 949 | Year: 2026
+2026-05-20 20:49:22,622 - parser - DEBUG - Found: QJMOTOR SRK 125S | Price: 11 990 | Year: 2025
+2026-05-20 20:49:22,643 - parser - DEBUG - Found: Zontes 125 G1 Aluminium | Price: 15 490 | Year: 2025
+2026-05-20 20:49:22,660 - parser - DEBUG - Found: KOVE MX250 | Price: 24 899 | Year: 2025
+2026-05-20 20:49:22,678 - parser - DEBUG - Found: Talaria Sting MX | Price: 27 500 | Year: 2024
+2026-05-20 20:49:22,693 - parser - DEBUG - Found: VOGE SR1 | Price: 11 990 | Year: 2025
+2026-05-20 20:49:22,712 - parser - DEBUG - Found: QJMOTOR SFA 1000 | Price: 41 490 | Year: 2025
+2026-05-20 20:49:22,730 - parser - DEBUG - Found: QJMOTOR SRK 125S | Price: 11 490 | Year: 2026
+2026-05-20 20:49:22,747 - parser - DEBUG - Found: QJMOTOR COV 125X | Price: 12 990 | Year: 2026
+2026-05-20 20:49:22,765 - parser - DEBUG - Found: Loncin XWOLF 550 | Price: 26 490 | Year: 2025
+2026-05-20 20:49:22,783 - parser - DEBUG - Found: Linhai Inny | Price: 24 500 | Year: 2025
+2026-05-20 20:49:22,800 - parser - DEBUG - Found: Zontes 703F | Price: 35 999 | Year: 2025
+2026-05-20 20:49:22,818 - parser - DEBUG - Found: ASIX Inny | Price: 3 999 | Year: 2025
+2026-05-20 20:49:22,835 - parser - DEBUG - Found: ASIX Inny | Price: 3 999 | Year: 2025
+2026-05-20 20:49:22,856 - parser - DEBUG - Found: Suzuki SV | Price: 10 900 | Year: 2003
+2026-05-20 20:49:22,872 - parser - DEBUG - Found: Yamaha Virago | Price: 10 800 | Year: 1999
+2026-05-20 20:49:22,891 - parser - DEBUG - Found: Inny Inny | Price: 29 990 | Year: 2026
+2026-05-20 20:49:22,910 - parser - DEBUG - Found: Yamaha MT | Price: 17 800 | Year: 2013
+2026-05-20 20:49:22,928 - parser - DEBUG - Found: Kawasaki Z | Price: 20 700 | Year: 2011
+2026-05-20 20:49:22,978 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=4" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:49:22,978 - crawler - INFO - Scraping page 5: https://www.otomoto.pl/motocykle-i-quady?page=5
+2026-05-20 20:49:22,978 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=5...
+2026-05-20 20:49:27,540 - parser - DEBUG - Found 31 potential listing items on the page.
+2026-05-20 20:49:27,563 - parser - DEBUG - Found: Kawasaki Z | Price: 20 700 | Year: 2011
+2026-05-20 20:49:27,583 - parser - DEBUG - Found: Honda CB | Price: 49 900 | Year: 2025
+2026-05-20 20:49:27,603 - parser - DEBUG - Found: Harley-Davidson Softail Slim | Price: 39 900 | Year: 2012
+2026-05-20 20:49:27,624 - parser - DEBUG - Found: Honda Hornet | Price: 32 300 | Year: 2025
+2026-05-20 20:49:27,639 - parser - DEBUG - Found: Simson Inny | Price: 22 800 | Year: 1959
+2026-05-20 20:49:27,659 - parser - DEBUG - Found: Honda CB | Price: 21 800 | Year: 2026
+2026-05-20 20:49:27,677 - parser - DEBUG - Found: QJMOTOR TRX 125 | Price: 9 990 | Year: 2025
+2026-05-20 20:49:27,696 - parser - DEBUG - Found: Honda NSS | Price: 26 900 | Year: 2025
+2026-05-20 20:49:27,715 - parser - DEBUG - Found: Honda CBR | Price: 109 900 | Year: 2025
+2026-05-20 20:49:27,735 - parser - DEBUG - Found: QJMOTOR SRK 125R | Price: 14 490 | Year: 2026
+2026-05-20 20:49:27,754 - parser - DEBUG - Found: QJMOTOR SRK 800RR | Price: 34 900 | Year: 2026
+2026-05-20 20:49:27,772 - parser - DEBUG - Found: QJMOTOR SVT 650 | Price: 27 990 | Year: 2025
+2026-05-20 20:49:27,792 - parser - DEBUG - Found: Honda CRF | Price: 79 900 | Year: 2025
+2026-05-20 20:49:27,810 - parser - DEBUG - Found: Honda NSS | Price: 19 900 | Year: 2024
+2026-05-20 20:49:27,827 - parser - DEBUG - Found: BMW F | Price: 10 499 | Year: 2006
+2026-05-20 20:49:27,846 - parser - DEBUG - Found: Honda Varadero | Price: 9 800 | Year: 2009
+2026-05-20 20:49:27,862 - parser - DEBUG - Found: Segway Snarler AT10 | Price: 50 990 | Year: 2026
+2026-05-20 20:49:27,881 - parser - DEBUG - Found: BMW GS | Price: 99 900 | Year: 2025
+2026-05-20 20:49:27,900 - parser - DEBUG - Found: Suzuki DL | Price: 47 900 | Year: 2025
+2026-05-20 20:49:27,914 - parser - DEBUG - Found: Inny Inny | Price: 24 500 | Year: 2026
+2026-05-20 20:49:27,937 - parser - DEBUG - Found: Yamaha X-max | Price: 21 000 | Year: 2025
+2026-05-20 20:49:27,955 - parser - DEBUG - Found: CFMoto CForce | Price: 23 900 | Year: 2025
+2026-05-20 20:49:27,973 - parser - DEBUG - Found: ASIX Inny | Price: 3 999 | Year: 2025
+2026-05-20 20:49:27,994 - parser - DEBUG - Found: CFMoto CForce | Price: 24 900 | Year: 2025
+2026-05-20 20:49:28,012 - parser - DEBUG - Found: QJMOTOR SRK 800RR | Price: 34 900 | Year: 2026
+2026-05-20 20:49:28,029 - parser - DEBUG - Found: QJMOTOR SVT 650X | Price: 29 990 | Year: 2025
+2026-05-20 20:49:28,049 - parser - DEBUG - Found: Aprilia SR | Price: 16 500 | Year: 2025
+2026-05-20 20:49:28,067 - parser - DEBUG - Found: Kawasaki Ninja | Price: 14 999 | Year: 2019
+2026-05-20 20:49:28,083 - parser - DEBUG - Found: Segway Snarler AT10 | Price: 44 990 | Year: 2026
+2026-05-20 20:49:28,102 - parser - DEBUG - Found: Triumph Bonneville Bobber | Price: 50 900 | Year: 2024
+2026-05-20 20:49:28,120 - parser - DEBUG - Found: QJMOTOR SRT900S | Price: 34 990 | Year: 2025
+2026-05-20 20:49:28,168 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=5" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:49:28,168 - crawler - INFO - Scraping page 6: https://www.otomoto.pl/motocykle-i-quady?page=6
+2026-05-20 20:49:28,169 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=6...
+2026-05-20 20:49:43,540 - parser - DEBUG - Found 22 potential listing items on the page.
+2026-05-20 20:49:43,571 - parser - DEBUG - Found: KTM Duke | Price: 16 400 | Year: 2022
+2026-05-20 20:49:43,591 - parser - DEBUG - Found: Honda CB | Price: 16 400 | Year: 2021
+2026-05-20 20:49:43,611 - parser - DEBUG - Found: Honda VFR | Price: 17 000 | Year: 2011
+2026-05-20 20:49:43,630 - parser - DEBUG - Found: Benelli Inny | Price: 38 000 | Year: 2026
+2026-05-20 20:49:43,648 - parser - DEBUG - Found: Suzuki Bandit | Price: 9 600 | Year: 2006
+2026-05-20 20:49:43,667 - parser - DEBUG - Found: CFMoto CForce | Price: 61 899 | Year: 2025
+2026-05-20 20:49:43,686 - parser - DEBUG - Found: Suzuki Bandit | Price: 20 800 | Year: 2009
+2026-05-20 20:49:43,705 - parser - DEBUG - Found: Ducati Multistrada | Price: 78 500 | Year: 2023
+2026-05-20 20:49:43,723 - parser - DEBUG - Found: CFMoto CForce | Price: 62 499 | Year: 2025
+2026-05-20 20:49:43,741 - parser - DEBUG - Found: Suzuki Hayabusa | Price: 85 900 | Year: 2025
+2026-05-20 20:49:43,758 - parser - DEBUG - Found: CFMoto CForce | Price: 30 900 | Year: 2025
+2026-05-20 20:49:43,778 - parser - DEBUG - Found: Romet K | Price: 29 999 | Year: 2026
+2026-05-20 20:49:43,796 - parser - DEBUG - Found: QJMOTOR SRT 450RX | Price: 22 990 | Year: 2026
+2026-05-20 20:49:43,814 - parser - DEBUG - Found: CFMoto CForce | Price: 49 899 | Year: 2024
+2026-05-20 20:49:43,831 - parser - DEBUG - Found: ELECTRORIDE Futuri 3 | Price: 18 999 | Year: 2023
+2026-05-20 20:49:43,849 - parser - DEBUG - Found: Kawasaki Ninja | Price: 11 900 | Year: 2021
+2026-05-20 20:49:43,867 - parser - DEBUG - Found: QJMOTOR SRV 125 | Price: 10 990 | Year: 2026
+2026-05-20 20:49:43,884 - parser - DEBUG - Found: Yamaha Virago | Price: 12 800 | Year: 2000
+2026-05-20 20:49:43,903 - parser - DEBUG - Found: CFMoto CForce | Price: 41 889 | Year: 2024
+2026-05-20 20:49:43,921 - parser - DEBUG - Found: Husqvarna 701 | Price: 55 900 | Year: 2025
+2026-05-20 20:49:43,939 - parser - DEBUG - Found: CFMoto CForce | Price: 49 899 | Year: 2024
+2026-05-20 20:49:43,958 - parser - DEBUG - Found: CFMoto CForce | Price: 27 749 | Year: 2024
+2026-05-20 20:49:43,999 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:android:app_name" content="Otomoto" data-next-head=""><meta property="al:android:package" content="pl.otomoto" dat...
+2026-05-20 20:49:43,999 - crawler - INFO - Scraping page 7: https://www.otomoto.pl/motocykle-i-quady?page=7
+2026-05-20 20:49:43,999 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=7...
+2026-05-20 20:49:47,923 - parser - DEBUG - Found 28 potential listing items on the page.
+2026-05-20 20:49:47,949 - parser - DEBUG - Found: Loncin XWOLF 550 | Price: 26 900 | Year: 2026
+2026-05-20 20:49:47,968 - parser - DEBUG - Found: BMW GS | Price: 127 500 | Year: 2025
+2026-05-20 20:49:47,988 - parser - DEBUG - Found: KTM Duke | Price: 36 899 | Year: 2025
+2026-05-20 20:49:48,005 - parser - DEBUG - Found: QJMOTOR 900 SX | Price: 36 990 | Year: 2026
+2026-05-20 20:49:48,027 - parser - DEBUG - Found: BMW K | Price: 153 640 | Year: 2026
+2026-05-20 20:49:48,044 - parser - DEBUG - Found: QJMOTOR SRT900S | Price: 34 990 | Year: 2026
+2026-05-20 20:49:48,063 - parser - DEBUG - Found: CFMoto Inny | Price: 29 899 | Year: 2026
+2026-05-20 20:49:48,082 - parser - DEBUG - Found: Harley-Davidson Pan America | Price: 122 889 | Year: 2026
+2026-05-20 20:49:48,100 - parser - DEBUG - Found: KTM Duke | Price: 25 490 | Year: 2025
+2026-05-20 20:49:48,118 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 34 990 | Year: 2026
+2026-05-20 20:49:48,137 - parser - DEBUG - Found: BMW R | Price: 166 800 | Year: 2025
+2026-05-20 20:49:48,156 - parser - DEBUG - Found: BMW R | Price: 46 890 | Year: 2017
+2026-05-20 20:49:48,172 - parser - DEBUG - Found: BMW GS | Price: 66 900 | Year: 2019
+2026-05-20 20:49:48,190 - parser - DEBUG - Found: Yamaha MT | Price: 37 800 | Year: 2024
+2026-05-20 20:49:48,208 - parser - DEBUG - Found: Kawasaki Z | Price: 13 999 | Year: 2019
+2026-05-20 20:49:48,225 - parser - DEBUG - Found: BMW R | Price: 26 900 | Year: 1997
+2026-05-20 20:49:48,246 - parser - DEBUG - Found: Honda VFR | Price: 9 500 | Year: 1999
+2026-05-20 20:49:48,264 - parser - DEBUG - Found: Ducati Diavel | Price: 89 900 | Year: 2023
+2026-05-20 20:49:48,283 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 29 900 | Year: 2026
+2026-05-20 20:49:48,300 - parser - DEBUG - Found: Daytona Dymoto 125 X | Price: 15 999 | Year: 2026
+2026-05-20 20:49:48,319 - parser - DEBUG - Found: ASIX Challanger 300 | Price: 15 999 | Year: 2026
+2026-05-20 20:49:48,338 - parser - DEBUG - Found: Junak RAW 125 | Price: 8 499 | Year: 2024
+2026-05-20 20:49:48,355 - parser - DEBUG - Found: VOGE SR1 | Price: 11 999 | Year: 2024
+2026-05-20 20:49:48,373 - parser - DEBUG - Found: Kawasaki Versys 650 | Price: 34 900 | Year: 2024
+2026-05-20 20:49:48,389 - parser - DEBUG - Found: Suzuki GSR | Price: 14 800 | Year: 2006
+2026-05-20 20:49:48,408 - parser - DEBUG - Found: Harley-Davidson Pan America | Price: 62 499 | Year: 2022
+2026-05-20 20:49:48,426 - parser - DEBUG - Found: KTM Duke | Price: 39 899 | Year: 2026
+2026-05-20 20:49:48,444 - parser - DEBUG - Found: Honda Transalp | Price: 47 600 | Year: 2026
+2026-05-20 20:49:48,492 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=7" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:49:48,493 - crawler - INFO - Scraping page 8: https://www.otomoto.pl/motocykle-i-quady?page=8
+2026-05-20 20:49:48,493 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=8...
+2026-05-20 20:49:53,104 - parser - DEBUG - Found 30 potential listing items on the page.
+2026-05-20 20:49:53,130 - parser - DEBUG - Found: Honda CB | Price: 41 300 | Year: 2025
+2026-05-20 20:49:53,149 - parser - DEBUG - Found: Honda CB | Price: 14 500 | Year: 2025
+2026-05-20 20:49:53,170 - parser - DEBUG - Found: Honda CMX | Price: 43 900 | Year: 2025
+2026-05-20 20:49:53,189 - parser - DEBUG - Found: Honda ADV350 | Price: 18 900 | Year: 2022
+2026-05-20 20:49:53,207 - parser - DEBUG - Found: Honda CMX | Price: 48 700 | Year: 2025
+2026-05-20 20:49:53,225 - parser - DEBUG - Found: Kawasaki Ninja H2 SX | Price: 79 900 | Year: 2022
+2026-05-20 20:49:53,243 - parser - DEBUG - Found: Can-Am Outlander | Price: 103 900 | Year: 2026
+2026-05-20 20:49:53,260 - parser - DEBUG - Found: Honda CB | Price: 54 000 | Year: 2025
+2026-05-20 20:49:53,284 - parser - DEBUG - Found: Honda CRF | Price: 24 700 | Year: 2025
+2026-05-20 20:49:53,304 - parser - DEBUG - Found: Harley-Davidson Touring Road Glide | Price: 189 000 | Year: 2024
+2026-05-20 20:49:53,323 - parser - DEBUG - Found: QJMOTOR COV 125X | Price: 12 990 | Year: 2026
+2026-05-20 20:49:53,342 - parser - DEBUG - Found: Suzuki VS | Price: 8 800 | Year: 1991
+2026-05-20 20:49:53,362 - parser - DEBUG - Found: Ducati Multistrada | Price: 112 000 | Year: 2025
+2026-05-20 20:49:53,382 - parser - DEBUG - Found: QJMOTOR SRV 125V | Price: 15 990 | Year: 2026
+2026-05-20 20:49:53,400 - parser - DEBUG - Found: Talaria Inny | Price: 32 900 | Year: 2026
+2026-05-20 20:49:53,422 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 28 990 | Year: 2026
+2026-05-20 20:49:53,470 - parser - DEBUG - Found: Kymco MXU | Price: 37 990 | Year: 2026
+2026-05-20 20:49:53,489 - parser - DEBUG - Found: Zipp Inny | Price: 3 499 | Year: 2026
+2026-05-20 20:49:53,510 - parser - DEBUG - Found: Barton Rocky | Price: 4 399 | Year: 2026
+2026-05-20 20:49:53,528 - parser - DEBUG - Found: Kawasaki Ninja | Price: 78 600 | Year: 2026
+2026-05-20 20:49:53,552 - parser - DEBUG - Found: BMW GS | Price: 148 900 | Year: 2025
+2026-05-20 20:49:53,574 - parser - DEBUG - Found: Vespa Primavera | Price: 19 999 | Year: 2023
+2026-05-20 20:49:53,594 - parser - DEBUG - Found: CFMoto Allroad | Price: 42 990 | Year: 2025
+2026-05-20 20:49:53,616 - parser - DEBUG - Found: KTM SMC 690 | Price: 50 000 | Year: 2026
+2026-05-20 20:49:53,635 - parser - DEBUG - Found: Suzuki Address | Price: 8 900 | Year: 2025
+2026-05-20 20:49:53,655 - parser - DEBUG - Found: Suzuki GSX | Price: 39 900 | Year: 2025
+2026-05-20 20:49:53,675 - parser - DEBUG - Found: Suzuki Burgman | Price: 11 900 | Year: 2025
+2026-05-20 20:49:53,696 - parser - DEBUG - Found: Suzuki DR-Z | Price: 38 500 | Year: 2026
+2026-05-20 20:49:53,717 - parser - DEBUG - Found: Suzuki Avenis | Price: 9 300 | Year: 2025
+2026-05-20 20:49:53,740 - parser - DEBUG - Found: KOVE 800X Rally | Price: 42 900 | Year: 2025
+2026-05-20 20:49:53,792 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=8" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:49:53,792 - crawler - INFO - Scraping page 9: https://www.otomoto.pl/motocykle-i-quady?page=9
+2026-05-20 20:49:53,792 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=9...
+2026-05-20 20:49:59,896 - parser - DEBUG - Found 32 potential listing items on the page.
+2026-05-20 20:49:59,927 - parser - DEBUG - Found: Segway AT5 | Price: 28 490 | Year: 2026
+2026-05-20 20:49:59,946 - parser - DEBUG - Found: BMW S | Price: 109 810 | Year: 2026
+2026-05-20 20:49:59,965 - parser - DEBUG - Found: QJMOTOR SRK 125S | Price: 11 990 | Year: 2026
+2026-05-20 20:49:59,986 - parser - DEBUG - Found: Zontes 125 G1 Aluminium | Price: 15 999 | Year: 2026
+2026-05-20 20:50:00,004 - parser - DEBUG - Found: Zontes 125 G1 Spoke | Price: 17 499 | Year: 2026
+2026-05-20 20:50:00,026 - parser - DEBUG - Found: Husqvarna Vitpilen | Price: 17 500 | Year: 2024
+2026-05-20 20:50:00,045 - parser - DEBUG - Found: VOGE 300GY RALLY | Price: 20 990 | Year: 2026
+2026-05-20 20:50:00,064 - parser - DEBUG - Found: Zuumav S6 | Price: 8 499 | Year: 2025
+2026-05-20 20:50:00,084 - parser - DEBUG - Found: Barton Inny | Price: 13 999 | Year: 2026
+2026-05-20 20:50:00,103 - parser - DEBUG - Found: BMW GS | Price: 117 000 | Year: 2025
+2026-05-20 20:50:00,121 - parser - DEBUG - Found: BMW K | Price: 124 900 | Year: 2025
+2026-05-20 20:50:00,139 - parser - DEBUG - Found: KTM Duke 125 | Price: 12 900 | Year: 2017
+2026-05-20 20:50:00,162 - parser - DEBUG - Found: Segway AT5 | Price: 27 990 | Year: 2026
+2026-05-20 20:50:00,183 - parser - DEBUG - Found: Honda X-ADV | Price: 53 200 | Year: 2025
+2026-05-20 20:50:00,201 - parser - DEBUG - Found: BMW GS | Price: 70 960 | Year: 2026
+2026-05-20 20:50:00,219 - parser - DEBUG - Found: Honda NT | Price: 64 300 | Year: 2026
+2026-05-20 20:50:00,238 - parser - DEBUG - Found: Honda GL | Price: 172 500 | Year: 2026
+2026-05-20 20:50:00,256 - parser - DEBUG - Found: Segway AT5 | Price: 24 990 | Year: 2026
+2026-05-20 20:50:00,273 - parser - DEBUG - Found: Yamaha Tracer | Price: 52 300 | Year: 2026
+2026-05-20 20:50:00,292 - parser - DEBUG - Found: Yamaha PW | Price: 9 500 | Year: 2024
+2026-05-20 20:50:00,311 - parser - DEBUG - Found: Yamaha MT | Price: 34 500 | Year: 2025
+2026-05-20 20:50:00,351 - parser - DEBUG - Found: Yamaha TTR | Price: 15 900 | Year: 2025
+2026-05-20 20:50:00,376 - parser - DEBUG - Found: Yamaha WR | Price: 47 000 | Year: 2025
+2026-05-20 20:50:00,394 - parser - DEBUG - Found: Honda NT | Price: 68 800 | Year: 2025
+2026-05-20 20:50:00,412 - parser - DEBUG - Found: Kawasaki Ninja 400 | Price: 19 900 | Year: 2018
+2026-05-20 20:50:00,431 - parser - DEBUG - Found: BMW GS | Price: 133 970 | Year: 2026
+2026-05-20 20:50:00,449 - parser - DEBUG - Found: Piaggio MP-3 | Price: 16 200 | Year: 2020
+2026-05-20 20:50:00,467 - parser - DEBUG - Found: Honda NT | Price: 59 800 | Year: 2025
+2026-05-20 20:50:00,486 - parser - DEBUG - Found: Harley-Davidson Pan America | Price: 121 890 | Year: 2026
+2026-05-20 20:50:00,503 - parser - DEBUG - Found: HISUN Guardian 550 | Price: 29 900 | Year: 2026
+2026-05-20 20:50:00,522 - parser - DEBUG - Found: BMW C 400 GT | Price: 41 000 | Year: 2025
+2026-05-20 20:50:00,540 - parser - DEBUG - Found: Zontes 125 G1 Spoke | Price: 16 799 | Year: 2025
+2026-05-20 20:50:00,593 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=9" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" conte...
+2026-05-20 20:50:00,593 - crawler - INFO - Scraping page 10: https://www.otomoto.pl/motocykle-i-quady?page=10
+2026-05-20 20:50:00,593 - crawler - DEBUG - Navigating to https://www.otomoto.pl/motocykle-i-quady?page=10...
+2026-05-20 20:50:03,764 - parser - DEBUG - Found 31 potential listing items on the page.
+2026-05-20 20:50:03,791 - parser - DEBUG - Found: Zontes 125 G1 Aluminium | Price: 15 499 | Year: 2025
+2026-05-20 20:50:03,815 - parser - DEBUG - Found: Harley-Davidson Softail Fat Bob | Price: 70 900 | Year: 2023
+2026-05-20 20:50:03,839 - parser - DEBUG - Found: Moto Guzzi Nevada | Price: 11 900 | Year: 2005
+2026-05-20 20:50:03,864 - parser - DEBUG - Found: Triumph Bonneville | Price: 28 800 | Year: 2015
+2026-05-20 20:50:03,888 - parser - DEBUG - Found: Kymco MXU | Price: 37 990 | Year: 2026
+2026-05-20 20:50:03,909 - parser - DEBUG - Found: Honda CB | Price: 21 800 | Year: 2026
+2026-05-20 20:50:03,932 - parser - DEBUG - Found: Can-Am Inny | Price: 121 400 | Year: 2026
+2026-05-20 20:50:03,951 - parser - DEBUG - Found: Zontes 125U | Price: 13 999 | Year: 2025
+2026-05-20 20:50:03,970 - parser - DEBUG - Found: Zipp Inny | Price: 4 499 | Year: 2026
+2026-05-20 20:50:03,991 - parser - DEBUG - Found: Triumph Tiger | Price: 23 900 | Year: 2022
+2026-05-20 20:50:04,010 - parser - DEBUG - Found: BMW GS | Price: 72 900 | Year: 2026
+2026-05-20 20:50:04,033 - parser - DEBUG - Found: MRF Inny | Price: 5 889 | Year: 2025
+2026-05-20 20:50:04,054 - parser - DEBUG - Found: ASIX XB-88 250cc | Price: 7 999 | Year: 2025
+2026-05-20 20:50:04,078 - parser - DEBUG - Found: KAYO K2 | Price: 7 789 | Year: 2025
+2026-05-20 20:50:04,099 - parser - DEBUG - Found: CFMoto CForce | Price: 29 900 | Year: 2026
+2026-05-20 20:50:04,119 - parser - DEBUG - Found: KAYO Inny | Price: 6 499 | Year: 2026
+2026-05-20 20:50:04,139 - parser - DEBUG - Found: KAYO Inny | Price: 3 499 | Year: 2026
+2026-05-20 20:50:04,162 - parser - DEBUG - Found: KAYO K2 PRO | Price: 8 999 | Year: 2026
+2026-05-20 20:50:04,182 - parser - DEBUG - Found: KAYO Inny | Price: 5 999 | Year: 2026
+2026-05-20 20:50:04,201 - parser - DEBUG - Found: Barton Inny | Price: 4 899 | Year: 2025
+2026-05-20 20:50:04,219 - parser - DEBUG - Found: Barton Raptor | Price: 5 499 | Year: 2025
+2026-05-20 20:50:04,238 - parser - DEBUG - Found: Barton Inny | Price: 5 600 | Year: 2025
+2026-05-20 20:50:04,258 - parser - DEBUG - Found: Segway Snarler AT6 | Price: 34 990 | Year: 2026
+2026-05-20 20:50:04,275 - parser - DEBUG - Found: Barton Raze | Price: 8 699 | Year: 2025
+2026-05-20 20:50:04,293 - parser - DEBUG - Found: Talaria Sting L1e | Price: 34 900 | Year: 2026
+2026-05-20 20:50:04,310 - parser - DEBUG - Found: BMW CE 04 | Price: 38 890 | Year: 2022
+2026-05-20 20:50:04,329 - parser - DEBUG - Found: CFMoto CForce | Price: 42 900 | Year: 2025
+2026-05-20 20:50:04,348 - parser - DEBUG - Found: Kawasaki Versys 650 | Price: 39 000 | Year: 2025
+2026-05-20 20:50:04,365 - parser - DEBUG - Found: Zipp Inny | Price: 4 299 | Year: 2026
+2026-05-20 20:50:04,384 - parser - DEBUG - Found: BMW Inny | Price: 29 800 | Year: 2001
+2026-05-20 20:50:04,401 - parser - DEBUG - Found: Barton NXT | Price: 5 699 | Year: 2025
+2026-05-20 20:50:04,453 - crawler - DEBUG - Page HTML snippet:
+<!DOCTYPE html><html lang="pl" dir="ltr"><head consent="ignore"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width, initial-scale=1" data-next-head=""><meta property="fb:app_id" content="1563466353912532" data-next-head=""><meta property="og:url" content="https://www.otomoto.pl/motocykle-i-quady?page=10" data-next-head=""><meta property="og:type" content="website" data-next-head=""><meta property="og:image" content="//statics.otomoto.pl/optimus-storage/a/otomotopl/images/fb-image200x200.png" data-next-head=""><meta property="og:site_name" content="otomoto.pl" data-next-head=""><meta property="al:ios:app_store_id" content="444086109" data-next-head=""><meta property="al:ios:app_name" content="Otomoto" data-next-head=""><meta property="al:ios:url" cont...
+2026-05-20 20:50:04,511 - browser - INFO - Browser stopped.
+2026-05-20 20:50:04,513 - crawler - INFO - Successfully scraped 290 listings.
+2026-05-20 20:50:04,517 - crawler - INFO - Data saved to data/raw/raw_listings.csv
+2026-05-20 20:50:04,517 - main - INFO - Starting data cleaning...
+2026-05-20 20:50:04,520 - normalizer - INFO - Brand names normalized.
+2026-05-20 20:50:04,523 - filter - INFO - Removed 29 duplicate records.
+2026-05-20 20:50:04,524 - filter - INFO - Removed 4 incomplete records.
+2026-05-20 20:50:04,526 - filter - INFO - Removed 25 outliers from column price.
+2026-05-20 20:50:04,526 - filter - INFO - Removed 53 outliers from column mileage.
+2026-05-20 20:50:04,527 - filter - INFO - Removed 6 outliers from column year.
+2026-05-20 20:50:04,528 - main - INFO - Processed data saved to data/processed/cleaned_listings.csv
+2026-05-20 20:50:04,528 - main - INFO - Starting market analysis...
+2026-05-20 20:50:04,530 - main - INFO - Market Shares:
+brand
+QJMOTOR       11.560694
+Honda          9.248555
+Segway         7.514451
+CFMoto         6.936416
+Zontes         6.358382
+ASIX           4.624277
+Barton         4.624277
+Yamaha         4.046243
+KOVE           3.468208
+Suzuki         3.468208
+Talaria        2.890173
+VOGE           2.890173
+KAYO           2.890173
+Loncin         2.312139
+Kawasaki       2.312139
+BMW            2.312139
+HISUN          2.312139
+KTM            2.312139
+Inny           1.734104
+Junak          1.734104
+Zipp           1.734104
+Benelli        1.156069
+Romet          1.156069
+Husqvarna      1.156069
+Aprilia        1.156069
+Vespa          1.156069
+Kymco          1.156069
+KXD            0.578035
+ODES           0.578035
+Alfarad        0.578035
+TGB            0.578035
+Morbidelli     0.578035
+Goes           0.578035
+Linhai         0.578035
+Triumph        0.578035
+Daytona        0.578035
+MRF            0.578035
+Name: proportion, dtype: float64
+2026-05-20 20:50:04,876 - statistics - INFO - Market structure plot saved to results/market_structure.png
+2026-05-20 20:50:05,002 - statistics - INFO - Distributions plot saved to results/distributions.png
+2026-05-20 20:50:05,102 - statistics - INFO - Regression plot for year saved to results/regression.png
+2026-05-20 20:50:05,186 - statistics - INFO - Regression plot for mileage saved to results/regression.png
+2026-05-20 20:50:05,260 - statistics - INFO - Correlation matrix saved to results/correlation.png
+2026-05-20 20:50:05,297 - clustering - INFO - Clustering completed with 3 clusters.
+2026-05-20 20:50:05,436 - statistics - INFO - Cluster plot saved to results/clusters.png
+2026-05-20 20:50:05,439 - regression - INFO - Model trained. MAE: 14754.71, R2: -0.09
+2026-05-20 20:50:05,442 - bargain_finder - INFO - Found 68 potential bargains.
+2026-05-20 20:50:05,442 - main - INFO - Analysis complete. Found 68 bargains.
+2026-05-20 20:50:05,447 - main - INFO - Bargains preview:
+      brand    model    year  mileage  capacity  power    price        type  cluster  predicted_price
+16  QJMOTOR  SRV 125  2026.0      1.0    1253.0   15.0  10990.0  Motorcycle        0     26754.827653
+22  Aprilia    Tuono  2025.0      1.0    1253.0   15.0  18900.0  Motorcycle        0     26819.775666
+24      KXD     Inny  2025.0      1.0    1243.0   14.0   3700.0  Motorcycle        0     26819.775666
+37  Alfarad     Inny  2025.0      1.0    2503.0   24.0   6800.0  Motorcycle        0     26819.775666
+56     ASIX       XB  2026.0      1.0    1403.0    0.0   5599.0  Motorcycle        0     26754.827653

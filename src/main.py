@@ -9,15 +9,13 @@ from src.analysis.bargain_finder import BargainFinder
 from src.utils.config_loader import load_config
 from src.utils.logger import setup_logger
 
-logger = None
 
 def main():
-    global logger
     # 1. Load Configuration
     config = load_config()
     
     # Initialize Logger with debug flag from config
-    logger = setup_logger("main", debug=config.get('debug', False))
+    logger = setup_logger("main")
     
     # 2. Scraping
     logger.info("Starting scraping process...")

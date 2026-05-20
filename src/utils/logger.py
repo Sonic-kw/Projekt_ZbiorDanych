@@ -1,10 +1,17 @@
 import logging
 import sys
+import os
+
+from src.utils.config_loader import load_config
 
 def setup_logger(name: str = "otomoto_analysis", debug: bool = False):
     """
     Sets up a logger that outputs to both console and a file.
     """
+    # Load debug flag from config
+    config = load_config()
+    debug = config.get('debug', False)
+
     level = logging.DEBUG if debug else logging.INFO
     
     # Set root logger level to ensure all loggers inherit it
@@ -24,7 +31,6 @@ def setup_logger(name: str = "otomoto_analysis", debug: bool = False):
         logger.addHandler(console_handler)
  
         # File handler - save to results folder
-        import os
         os.makedirs("results", exist_ok=True)
         file_handler = logging.FileHandler("results/analysis.log")
         file_handler.setFormatter(formatter)
