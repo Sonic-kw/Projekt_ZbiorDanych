@@ -1,0 +1,15 @@
+[project]
+name = "otomoto-analysis"
+version = "0.1.0"
+description = "Otomoto Analysis is a Python package for analyzing data from the Otomoto platform, providing insights into car listings and market trends."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.9",
+    "pandas>=3.0.3",
+    "playwright>=1.60.0",
+    "pytest>=9.0.3",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.8.0",
+    "seaborn>=0.13.2",
+]

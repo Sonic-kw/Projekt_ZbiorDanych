@@ -1,0 +1,22 @@
+debug: true
+scraper:
+  start_url: "https://www.otomoto.pl/motocykle-i-quady"
+  max_pages: 10
+  timeout: 30000
+
+cleaning:
+  outlier_threshold: 1.5
+  required_columns:
+    - brand
+    - model
+    - year
+    - mileage
+    - price
+
+analysis:
+  bargain_threshold: 0.15
+  clustering_clusters: 3
+
+paths:
+  raw_data: "data/raw/raw_listings.csv"
+  processed_data: "data/processed/cleaned_listings.csv"
