@@ -36,7 +36,7 @@ def test_remove_incomplete():
         'year': [2020, 2021, 0]
     })
     filter_tool = DataFilter()
-    result = filter_tool.remove_incomplete(df, ['brand', 'price', 'year'])
+    result = filter_tool.remove_incomplete(df)
     # Row 1 has NaN price, Row 2 has 0 year
     assert len(result) == 1
     assert result['brand'].iloc[0] == 'A'

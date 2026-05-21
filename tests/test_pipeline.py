@@ -9,10 +9,7 @@ from src.main import get_data_source, prepare_dataset, read_existing_data
 def _base_config(raw_path: str, processed_path: str, data_source: str) -> dict:
     return {
         "pipeline": {"data_source": data_source},
-        "cleaning": {
-            "required_columns": ["brand", "model", "year", "mileage", "price"],
-            "outlier_threshold": 1.5,
-        },
+        "cleaning": {"outlier_threshold": 1.5},
         "paths": {
             "raw_data": raw_path,
             "processed_data": processed_path,

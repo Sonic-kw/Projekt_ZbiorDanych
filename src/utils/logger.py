@@ -1,6 +1,6 @@
 import logging
 import sys
-import os
+from pathlib import Path
 
 from src.utils.config_loader import load_config
 
@@ -31,7 +31,7 @@ def setup_logger(name: str = "otomoto_analysis", debug: bool = False):
         logger.addHandler(console_handler)
  
         # File handler - save to results folder
-        os.makedirs("results", exist_ok=True)
+        Path("results").mkdir(parents=True, exist_ok=True)
         file_handler = logging.FileHandler("results/analysis.log")
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)

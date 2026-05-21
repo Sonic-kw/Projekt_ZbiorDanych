@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 from pathlib import Path
 from src.scraper.browser import OtoMotoBrowser
@@ -49,10 +48,10 @@ class OtoMotoCrawler:
             if not listings:
                 if self.config.get('debug', False):
                     logger.warning(f"No listings found on page {page_num}. Saving HTML for diagnostics...")
-                    self._ensure_output_dir("results/debug/")
-                    with open(f"results/debug/debug_page_{page_num}.html", "w", encoding="utf-8") as f:
-                        f.write(page.content())
-                    logger.debug(f"Page HTML saved to results/debug/debug_page_{page_num}.html")
+                    debug_file = Path("results/debug") / f"debug_page_{page_num}.html"
+                    self._ensure_output_dir(str(debug_file))
+                    debug_file.write_text(page.content(), encoding="utf-8")
+                    logger.debug(f"Page HTML saved to {debug_file}")
                 
                 logger.info(f"No listings found on page {page_num}. Reached the end of results.")
                 break

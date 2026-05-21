@@ -1,17 +1,18 @@
-debug: true
+debug: false
+pipeline:
+  # Options: scrape, raw, processed
+  # scrape: fetch fresh listings, clean them, and recreate analysis
+  # raw: use paths.raw_data, clean it, and recreate analysis
+  # processed: use paths.processed_data and recreate analysis only
+  data_source: "scrape"
+
 scraper:
   start_url: "https://www.otomoto.pl/motocykle-i-quady"
-  max_pages: 10
+  max_pages: 25
   timeout: 30000
 
 cleaning:
   outlier_threshold: 1.5
-  required_columns:
-    - brand
-    - model
-    - year
-    - mileage
-    - price
 
 analysis:
   bargain_threshold: 0.15

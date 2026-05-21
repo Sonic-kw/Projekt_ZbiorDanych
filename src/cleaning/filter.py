@@ -5,6 +5,8 @@ from src.utils.logger import setup_logger
 logger = setup_logger("filter")
 
 class DataFilter:
+    REQUIRED_COLUMNS = ["brand", "model", "year", "mileage", "price"]
+
     @staticmethod
     def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
         initial_count = len(df)
@@ -13,11 +15,14 @@ class DataFilter:
         return df
 
     @staticmethod
-    def remove_incomplete(df: pd.DataFrame, required_columns: list) -> pd.DataFrame:
+    def remove_incomplete(df: pd.DataFrame, required_columns: list | None = None) -> pd.DataFrame:
+        required_columns = required_columns or DataFilter.REQUIRED_COLUMNS
+        present_required_columns = [col for col in required_columns if col in df.columns]
         initial_count = len(df)
-        df = df.dropna(subset=required_columns)
+        if present_required_columns:
+            df = df.dropna(subset=present_required_columns)
         # Also remove rows where critical values are 0 (if they should be positive)
-        for col in required_columns:
+        for col in present_required_columns:
             if df[col].dtype in [np.float64, np.int64]:
                 df = df[df[col] > 0]
         

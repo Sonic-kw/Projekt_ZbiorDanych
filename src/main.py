@@ -35,7 +35,7 @@ def _clean_raw_data(raw_df: pd.DataFrame, config: dict, logger) -> pd.DataFrame:
 
     data_filter = DataFilter()
     df = data_filter.remove_duplicates(df)
-    df = data_filter.remove_incomplete(df, config['cleaning']['required_columns'])
+    df = data_filter.remove_incomplete(df)
     df = data_filter.remove_outliers_iqr(
         df,
         columns=['price', 'mileage', 'year'],
