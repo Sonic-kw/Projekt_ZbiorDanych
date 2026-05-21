@@ -4,12 +4,24 @@ from src.cleaning.normalizer import DataNormalizer
 from src.cleaning.filter import DataFilter
 
 def test_normalize_brands():
-    df = pd.DataFrame({'brand': ['Yamaha Motor', 'Honda Motor', 'Unknown Brand']})
+    df = pd.DataFrame({'brand': ['Yamaha Motor', 'honda motor', 'Bmw', 'Unknown Brand']})
     normalizer = DataNormalizer()
     result = normalizer.normalize_brands(df)
     assert result['brand'].iloc[0] == 'Yamaha'
     assert result['brand'].iloc[1] == 'Honda'
-    assert result['brand'].iloc[2] == 'Unknown Brand'
+    assert result['brand'].iloc[2] == 'BMW'
+    assert result['brand'].iloc[3] == 'Unknown Brand'
+
+def test_normalize_multiword_brands_from_title_split():
+    df = pd.DataFrame({
+        'brand': ['Moto', 'Royal', 'MV', 'CF', 'Harley'],
+        'model': ['Guzzi V7', 'Enfield Classic 350', 'Agusta Brutale', 'Moto 700MT', 'Davidson Sportster']
+    })
+    normalizer = DataNormalizer()
+    result = normalizer.normalize_brands(df)
+
+    assert result['brand'].tolist() == ['Moto Guzzi', 'Royal Enfield', 'MV Agusta', 'CFMOTO', 'Harley-Davidson']
+    assert result['model'].tolist() == ['V7', 'Classic 350', 'Brutale', '700MT', 'Sportster']
 
 def test_remove_duplicates():
     df = pd.DataFrame({'a': [1, 1, 2], 'b': [3, 3, 4]})

@@ -7,18 +7,6 @@ logger = setup_logger("parser")
 
 class OtoMotoParser:
     @staticmethod
-    def parse_price(price_str: str) -> float:
-        """Extracts numeric price from string like '15 000 zł'."""
-        if not price_str:
-            return 0.0
-        # Remove non-digit characters except for potential decimal separators
-        cleaned = re.sub(r'[^\d]', '', price_str)
-        try:
-            return float(cleaned)
-        except ValueError:
-            return 0.0
-
-    @staticmethod
     def parse_numeric(value_str: str) -> float:
         """Extracts numeric value from strings like '12 000 km' or '600 cm3'."""
         if not value_str:
@@ -82,7 +70,7 @@ class OtoMotoParser:
                     "mileage": self.parse_numeric(mileage_text),
                     "capacity": self.parse_numeric(capacity_text),
                     "power": power,
-                    "price": self.parse_price(price_text),
+                    "price": self.parse_numeric(price_text),
                     "type": "Motorcycle"
                 })
             except Exception as e:

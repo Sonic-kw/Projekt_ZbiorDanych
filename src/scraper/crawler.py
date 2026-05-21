@@ -1,5 +1,6 @@
+import os
 import pandas as pd
-from typing import List
+from pathlib import Path
 from src.scraper.browser import OtoMotoBrowser
 from src.scraper.parser import OtoMotoParser
 from src.utils.logger import setup_logger
@@ -12,6 +13,10 @@ class OtoMotoCrawler:
         self.config = load_config(config_path)
         self.browser = OtoMotoBrowser(headless=True)
         self.parser = OtoMotoParser()
+
+    @staticmethod
+    def _ensure_output_dir(output_path: str) -> None:
+        Path(output_path).parent.mkdir(parents=True, exist_ok=True)
 
     def scrape(self) -> pd.DataFrame:
         self.browser.start()
@@ -44,19 +49,13 @@ class OtoMotoCrawler:
             if not listings:
                 if self.config.get('debug', False):
                     logger.warning(f"No listings found on page {page_num}. Saving HTML for diagnostics...")
-                    import os
-                    os.makedirs("data/raw", exist_ok=True)
-                    with open(f"data/raw/debug_page_{page_num}.html", "w", encoding="utf-8") as f:
+                    self._ensure_output_dir("results/debug/")
+                    with open(f"results/debug/debug_page_{page_num}.html", "w", encoding="utf-8") as f:
                         f.write(page.content())
-                    logger.debug(f"Page HTML saved to data/raw/debug_page_{page_num}.html")
+                    logger.debug(f"Page HTML saved to results/debug/debug_page_{page_num}.html")
                 
                 logger.info(f"No listings found on page {page_num}. Reached the end of results.")
                 break
-
-            # Print a piece of the website in logs if debug is on
-            if self.config.get('debug', False):
-                html_snippet = page.content()[:1000] # First 1000 chars
-                logger.debug(f"Page HTML snippet:\n{html_snippet}...")
 
             all_listings.extend(listings)
                 
@@ -67,5 +66,6 @@ class OtoMotoCrawler:
         return df
 
     def save_to_csv(self, df: pd.DataFrame, path: str):
+        self._ensure_output_dir(path)
         df.to_csv(path, index=False)
         logger.info(f"Data saved to {path}")
