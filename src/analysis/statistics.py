@@ -483,13 +483,25 @@ class MarketAnalysis:
         """Plots candidate bargains against peer price and mileage averages."""
         MarketAnalysis._ensure_output_dir(output_path)
         required = {"price_delta_pct", "mileage_delta_pct", "brand", "model"}
-        fig, ax = plt.subplots(figsize=(11, 8))
+        _, ax = plt.subplots(figsize=(11, 8))
 
         if bargains.empty or not required.issubset(bargains.columns):
             ax.text(0.5, 0.5, "Nie znaleziono kandydatów na okazje", ha="center", va="center", fontsize=14)
             ax.set_axis_off()
         else:
             plot_df = bargains.head(30).copy()
+            
+            # Automatic scaling: filter data to 5th-95th percentile to remove extreme outliers
+            x_p5, x_p95 = np.percentile(plot_df["price_delta_pct"], [5, 95])
+            y_p5, y_p95 = np.percentile(plot_df["mileage_delta_pct"], [5, 95])
+            
+            plot_df = plot_df[
+                (plot_df["price_delta_pct"] >= x_p5) & 
+                (plot_df["price_delta_pct"] <= x_p95) & 
+                (plot_df["mileage_delta_pct"] >= y_p5) & 
+                (plot_df["mileage_delta_pct"] <= y_p95)
+            ]
+
             sns.scatterplot(
                 data=plot_df,
                 x="price_delta_pct",
@@ -501,8 +513,15 @@ class MarketAnalysis:
                 ax=ax,
             )
             for _, row in plot_df.iterrows():
-                label = f"{row['brand']} {row['model']}"
+                if row['brand'] == "Inny" and row['model'] == "Inny":
+                    label = ""
+                else:
+                    label = f"{row['brand']} {row['model']}"
                 ax.text(row["price_delta_pct"], row["mileage_delta_pct"], label, fontsize=8, alpha=0.75)
+            
+            ax.set_xlim(x_p5 if x_p5 != x_p95 else x_p5 - 1, x_p95 if x_p5 != x_p95 else x_p95 + 1)
+            ax.set_ylim(y_p5 if y_p5 != y_p95 else y_p5 - 1, y_p95 if y_p5 != y_p95 else y_p95 + 1)
+
             ax.axvline(0, color="gray", linewidth=1)
             ax.axhline(0, color="gray", linewidth=1)
             ax.set_title("Kandydaci na okazje względem średnich dla podobnych ogłoszeń")
