@@ -1,11 +1,14 @@
 from playwright.sync_api import Page
 from typing import List, Dict, Any
 import re
+from urllib.parse import urljoin
 from src.utils.logger import setup_logger
 
 logger = setup_logger("parser")
 
 class OtoMotoParser:
+    BASE_URL = "https://www.otomoto.pl"
+
     @staticmethod
     def parse_numeric(value_str: str) -> float:
         """Extracts numeric value from strings like '12 000 km' or '600 cm3'."""
@@ -31,6 +34,10 @@ class OtoMotoParser:
                 # Title/Brand/Model
                 title_el = item.query_selector('h2.e123dwbo0 a')
                 brand_model = title_el.inner_text().strip() if title_el else ""
+                listing_href = title_el.get_attribute("href") if title_el else None
+                listing_url = urljoin(self.BASE_URL, listing_href) if listing_href else ""
+                listing_id_match = re.search(r"ID[0-9A-Za-z]+", listing_url)
+                listing_id = listing_id_match.group(0) if listing_id_match else ""
                 
                 # Price
                 price_el = item.query_selector('h3.eg88ra81')
@@ -71,7 +78,9 @@ class OtoMotoParser:
                     "capacity": self.parse_numeric(capacity_text),
                     "power": power,
                     "price": self.parse_numeric(price_text),
-                    "type": "Motorcycle"
+                    "type": "Motorcycle",
+                    "listing_id": listing_id,
+                    "listing_url": listing_url,
                 })
             except Exception as e:
                 logger.error(f"Error parsing listing item: {e}")

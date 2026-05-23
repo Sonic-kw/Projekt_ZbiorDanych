@@ -26,10 +26,11 @@ def test_market_segmenter():
         'year': [2010, 2015, 2020],
         'mileage': [50000, 20000, 5000]
     })
-    segmenter = MarketSegmenter(n_clusters=2)
+    segmenter = MarketSegmenter(n_clusters=2, algorithm="kmeans")
     clusters = segmenter.fit_predict(df)
     assert len(clusters) == 3
     assert set(clusters).issubset({0, 1})
+    assert segmenter.last_metrics["selected_algorithm"] == "kmeans"
 
 def test_percentile_summary_includes_numeric_columns():
     df = pd.DataFrame({

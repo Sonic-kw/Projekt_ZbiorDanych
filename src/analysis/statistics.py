@@ -21,6 +21,8 @@ class MarketAnalysis:
         "capacity": "Pojemność silnika",
         "power": "Moc",
         "type": "Typ motocykla",
+        "listing_id": "Identyfikator ogłoszenia",
+        "listing_url": "URL ogłoszenia",
         "cluster": "Klaster",
         "brand_cluster": "Klaster marek",
         "n": "Liczba ogłoszeń",
@@ -38,6 +40,13 @@ class MarketAnalysis:
         "mileage_delta_pct": "Przebieg względem średniej (%)",
         "deal_score": "Wynik okazji",
         "missing_pct": "Braki danych (%)",
+        "selected_algorithm": "Wybrany algorytm klastrowania",
+        "selected_silhouette": "Silhouette (wybrany)",
+        "kmeans_silhouette": "Silhouette KMeans",
+        "dbscan_silhouette": "Silhouette DBSCAN",
+        "kmeans_cluster_count": "Liczba klastrów KMeans",
+        "dbscan_cluster_count": "Liczba klastrów DBSCAN",
+        "dbscan_noise_count": "Liczba punktów szumu DBSCAN",
     }
 
     POLISH_FILENAME_PARTS = {
@@ -483,13 +492,25 @@ class MarketAnalysis:
         """Plots candidate bargains against peer price and mileage averages."""
         MarketAnalysis._ensure_output_dir(output_path)
         required = {"price_delta_pct", "mileage_delta_pct", "brand", "model"}
-        fig, ax = plt.subplots(figsize=(11, 8))
+        _, ax = plt.subplots(figsize=(11, 8))
 
         if bargains.empty or not required.issubset(bargains.columns):
             ax.text(0.5, 0.5, "Nie znaleziono kandydatów na okazje", ha="center", va="center", fontsize=14)
             ax.set_axis_off()
         else:
             plot_df = bargains.head(30).copy()
+            
+            # Automatic scaling: filter data to 5th-95th percentile to remove extreme outliers
+            x_p5, x_p95 = np.percentile(plot_df["price_delta_pct"], [5, 95])
+            y_p5, y_p95 = np.percentile(plot_df["mileage_delta_pct"], [5, 95])
+            
+            plot_df = plot_df[
+                (plot_df["price_delta_pct"] >= x_p5) & 
+                (plot_df["price_delta_pct"] <= x_p95) & 
+                (plot_df["mileage_delta_pct"] >= y_p5) & 
+                (plot_df["mileage_delta_pct"] <= y_p95)
+            ]
+
             sns.scatterplot(
                 data=plot_df,
                 x="price_delta_pct",
@@ -501,8 +522,15 @@ class MarketAnalysis:
                 ax=ax,
             )
             for _, row in plot_df.iterrows():
-                label = f"{row['brand']} {row['model']}"
+                if row['brand'] == "Inny" and row['model'] == "Inny":
+                    label = ""
+                else:
+                    label = f"{row['brand']} {row['model']}"
                 ax.text(row["price_delta_pct"], row["mileage_delta_pct"], label, fontsize=8, alpha=0.75)
+            
+            ax.set_xlim(x_p5 if x_p5 != x_p95 else x_p5 - 1, x_p95 if x_p5 != x_p95 else x_p95 + 1)
+            ax.set_ylim(y_p5 if y_p5 != y_p95 else y_p5 - 1, y_p95 if y_p5 != y_p95 else y_p95 + 1)
+
             ax.axvline(0, color="gray", linewidth=1)
             ax.axhline(0, color="gray", linewidth=1)
             ax.set_title("Kandydaci na okazje względem średnich dla podobnych ogłoszeń")
@@ -516,7 +544,11 @@ class MarketAnalysis:
         logger.info(f"Bargain candidates chart saved to {output_path}")
 
     @staticmethod
-    def plot_clusters(df: pd.DataFrame, output_path: str = "results/klastry_ogloszen.png"):
+    def plot_clusters(
+        df: pd.DataFrame,
+        output_path: str = "results/klastry_ogloszen.png",
+        clustering_method: str = "kmeans",
+    ):
         """Plots K-means clusters (Price vs Mileage)."""
         MarketAnalysis._ensure_output_dir(output_path)
         if 'cluster' not in df.columns:
@@ -524,8 +556,12 @@ class MarketAnalysis:
             return
 
         plt.figure(figsize=(12, 8))
-        sns.scatterplot(data=df, x='mileage', y='price', hue='cluster', palette='deep', s=100, alpha=0.7)
-        plt.title("Segmentacja ogłoszeń (klasteryzacja k-means)", fontsize=15)
+        palette = "deep"
+        if (df["cluster"] == -1).any():
+            palette = "tab10"
+        sns.scatterplot(data=df, x='mileage', y='price', hue='cluster', palette=palette, s=100, alpha=0.7)
+        method_name = clustering_method.upper()
+        plt.title(f"Segmentacja ogłoszeń ({method_name})", fontsize=15)
         plt.xlabel("Przebieg (km)")
         plt.ylabel("Cena (PLN)")
         plt.legend(title="Klaster")

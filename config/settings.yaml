@@ -8,7 +8,7 @@ pipeline:
 
 scraper:
   start_url: "https://www.otomoto.pl/motocykle-i-quady"
-  max_pages: 25
+  max_pages: 100
   timeout: 30000
 
 cleaning:
@@ -17,6 +17,11 @@ cleaning:
 analysis:
   bargain_threshold: 0.15
   clustering_clusters: 3
+
+  # Options: auto, kmeans, dbscan
+  clustering_algorithm: "auto"
+  dbscan_eps: 0.7
+  dbscan_min_samples: 12
 
 paths:
   raw_data: "data/raw/raw_listings.csv"

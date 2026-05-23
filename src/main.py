@@ -28,6 +28,16 @@ def _read_existing_data(path: str, dataset_name: str) -> pd.DataFrame:
     return pd.read_csv(data_path)
 
 
+def get_data_source(config: dict) -> str:
+    """Public wrapper used by tests and CLI integrations."""
+    return _get_data_source(config)
+
+
+def read_existing_data(path: str, dataset_name: str) -> pd.DataFrame:
+    """Public wrapper used by tests and CLI integrations."""
+    return _read_existing_data(path, dataset_name)
+
+
 def _clean_raw_data(raw_df: pd.DataFrame, config: dict, logger) -> pd.DataFrame:
     logger.info("Starting data cleaning...")
     normalizer = DataNormalizer()
@@ -103,9 +113,16 @@ def main():
     )
     stats.localize_columns(brand_coefficients).to_csv(results_dir / "wspolczynniki_marek.csv", index=False)
 
-    segmenter = MarketSegmenter(n_clusters=config['analysis']['clustering_clusters'])
+    segmenter = MarketSegmenter(
+        n_clusters=config['analysis']['clustering_clusters'],
+        algorithm=config['analysis'].get('clustering_algorithm', 'auto'),
+        dbscan_eps=config['analysis'].get('dbscan_eps', 0.7),
+        dbscan_min_samples=config['analysis'].get('dbscan_min_samples', 12),
+    )
     df['cluster'] = segmenter.fit_predict(df)
-    stats.plot_clusters(df)
+    clustering_metrics = pd.DataFrame([segmenter.last_metrics])
+    stats.localize_columns(clustering_metrics).to_csv(results_dir / "jakosc_klastrow.csv", index=False)
+    stats.plot_clusters(df, clustering_method=segmenter.last_metrics.get("selected_algorithm", "kmeans"))
 
     finder = BargainFinder(threshold=config['analysis']['bargain_threshold'])
     bargains = finder.find_bargains(df)
