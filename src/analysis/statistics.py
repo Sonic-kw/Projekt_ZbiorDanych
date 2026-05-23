@@ -21,6 +21,8 @@ class MarketAnalysis:
         "capacity": "Pojemność silnika",
         "power": "Moc",
         "type": "Typ motocykla",
+        "listing_id": "Identyfikator ogłoszenia",
+        "listing_url": "URL ogłoszenia",
         "cluster": "Klaster",
         "brand_cluster": "Klaster marek",
         "n": "Liczba ogłoszeń",
@@ -38,6 +40,13 @@ class MarketAnalysis:
         "mileage_delta_pct": "Przebieg względem średniej (%)",
         "deal_score": "Wynik okazji",
         "missing_pct": "Braki danych (%)",
+        "selected_algorithm": "Wybrany algorytm klastrowania",
+        "selected_silhouette": "Silhouette (wybrany)",
+        "kmeans_silhouette": "Silhouette KMeans",
+        "dbscan_silhouette": "Silhouette DBSCAN",
+        "kmeans_cluster_count": "Liczba klastrów KMeans",
+        "dbscan_cluster_count": "Liczba klastrów DBSCAN",
+        "dbscan_noise_count": "Liczba punktów szumu DBSCAN",
     }
 
     POLISH_FILENAME_PARTS = {
@@ -535,7 +544,11 @@ class MarketAnalysis:
         logger.info(f"Bargain candidates chart saved to {output_path}")
 
     @staticmethod
-    def plot_clusters(df: pd.DataFrame, output_path: str = "results/klastry_ogloszen.png"):
+    def plot_clusters(
+        df: pd.DataFrame,
+        output_path: str = "results/klastry_ogloszen.png",
+        clustering_method: str = "kmeans",
+    ):
         """Plots K-means clusters (Price vs Mileage)."""
         MarketAnalysis._ensure_output_dir(output_path)
         if 'cluster' not in df.columns:
@@ -543,8 +556,12 @@ class MarketAnalysis:
             return
 
         plt.figure(figsize=(12, 8))
-        sns.scatterplot(data=df, x='mileage', y='price', hue='cluster', palette='deep', s=100, alpha=0.7)
-        plt.title("Segmentacja ogłoszeń (klasteryzacja k-means)", fontsize=15)
+        palette = "deep"
+        if (df["cluster"] == -1).any():
+            palette = "tab10"
+        sns.scatterplot(data=df, x='mileage', y='price', hue='cluster', palette=palette, s=100, alpha=0.7)
+        method_name = clustering_method.upper()
+        plt.title(f"Segmentacja ogłoszeń ({method_name})", fontsize=15)
         plt.xlabel("Przebieg (km)")
         plt.ylabel("Cena (PLN)")
         plt.legend(title="Klaster")
