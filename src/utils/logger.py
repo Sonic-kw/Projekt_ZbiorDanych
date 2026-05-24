@@ -8,13 +8,11 @@ def setup_logger(name: str = "otomoto_analysis", debug: bool = False):
     """
     Sets up a logger that outputs to both console and a file.
     """
-    # Load debug flag from config
     config = load_config()
     debug = config.get('debug', False)
 
     level = logging.DEBUG if debug else logging.INFO
     
-    # Set root logger level to ensure all loggers inherit it
     logging.getLogger().setLevel(level)
     
     logger = logging.getLogger(name)

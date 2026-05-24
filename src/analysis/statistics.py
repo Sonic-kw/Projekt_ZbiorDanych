@@ -500,7 +500,6 @@ class MarketAnalysis:
         else:
             plot_df = bargains.head(30).copy()
             
-            # Automatic scaling: filter data to 5th-95th percentile to remove extreme outliers
             x_p5, x_p95 = np.percentile(plot_df["price_delta_pct"], [5, 95])
             y_p5, y_p95 = np.percentile(plot_df["mileage_delta_pct"], [5, 95])
             

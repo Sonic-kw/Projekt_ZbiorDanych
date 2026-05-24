@@ -38,7 +38,6 @@ class MarketSegmenter:
         current_year = datetime.datetime.now().year
         
         df = df.copy()
-        # Avoid division by zero
         df['age'] = (current_year - df['year']).clip(lower=1)
         df['depreciation_coeff'] = df['price'] / df['age']
         df['exploitation_coeff'] = df['price'] / df['mileage'].clip(lower=1)
@@ -47,7 +46,6 @@ class MarketSegmenter:
 
     @staticmethod
     def _calculate_silhouette(features: np.ndarray, labels: np.ndarray) -> float | None:
-        # For DBSCAN we ignore noise points (-1) in quality metric calculation.
         mask = labels != -1
         filtered_features = features[mask]
         filtered_labels = labels[mask]

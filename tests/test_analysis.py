@@ -5,7 +5,6 @@ from src.analysis.statistics import MarketAnalysis
 from src.analysis.bargain_finder import BargainFinder
 
 def test_price_predictor():
-    # Create a linear relationship: price = 1000 * year - 2 * mileage
     df = pd.DataFrame({
         'year': [2010, 2015, 2020, 2025],
         'mileage': [50000, 30000, 10000, 1000],
@@ -14,7 +13,6 @@ def test_price_predictor():
     predictor = PricePredictor()
     mae, r2 = predictor.train(df)
     
-    # Check if model can predict
     test_df = pd.DataFrame({'year': [2018], 'mileage': [20000]})
     prediction = predictor.predict(test_df)
     assert len(prediction) == 1

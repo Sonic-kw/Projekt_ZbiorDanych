@@ -18,7 +18,7 @@ This project is designed to explore the secondary motorcycle market in Poland by
 
 ## 🛠️ Technology Stack
 
-- **Language**: Python 3.11+
+- **Language**: Python 3.13+
 - **Project Management**: [uv](https://github.com/astral-sh/uv)
 - **Scraping**: Playwright
 - **Data Processing**: Pandas, NumPy
@@ -44,7 +44,9 @@ uv run playwright install
 ### 1. Configuration
 Edit `config/settings.yaml` to set your desired starting URL and analysis parameters:
 - `start_url`: The OtoMoto category page you want to scrape.
-- `max_pages`: Number of pages to scrape (default: 10).
+- `max_pages`: Number of pages to scrape (default: 100).
+- `data_source`: Source of data (`scrape`, `raw`, or `processed`).
+- `clustering_algorithm`: Algorithm to use (`auto`, `kmeans`, or `dbscan`).
 - `debug`: Set to `true` for detailed logs.
 
 ### 2. Execute the Pipeline

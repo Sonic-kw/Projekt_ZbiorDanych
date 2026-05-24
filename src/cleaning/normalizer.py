@@ -6,7 +6,6 @@ logger = setup_logger("normalizer")
 
 class DataNormalizer:
     def __init__(self, brand_mapping: Dict[str, str] = None):
-        # Default mapping for common brand variations and names scraped from titles.
         default_mapping = {
             "Yamaha Motor": "Yamaha",
             "Honda Motor": "Honda",
@@ -71,7 +70,6 @@ class DataNormalizer:
         if mapped:
             return mapped
 
-        # Keep well-known all-uppercase brands readable after scraping.
         upper_brands = {"BMW", "KTM", "CFMOTO", "QJMOTOR", "GASGAS", "KXD", "ASIX"}
         if cleaned.upper() in upper_brands:
             return cleaned.upper()

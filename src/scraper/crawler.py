@@ -35,7 +35,6 @@ class OtoMotoCrawler:
             logger.debug(f"Navigating to {current_url}...")
             page.goto(current_url, wait_until="networkidle")
             
-            # Handle potential cookie consent
             try:
                 consent_button = page.query_selector('button:has-text("Przejdź do serwisu")')
                 if consent_button:

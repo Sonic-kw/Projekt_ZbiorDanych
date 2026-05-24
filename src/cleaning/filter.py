@@ -21,7 +21,6 @@ class DataFilter:
         initial_count = len(df)
         if present_required_columns:
             df = df.dropna(subset=present_required_columns)
-        # Also remove rows where critical values are 0 (if they should be positive)
         for col in present_required_columns:
             if df[col].dtype in [np.float64, np.int64]:
                 df = df[df[col] > 0]

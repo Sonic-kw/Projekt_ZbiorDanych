@@ -25,13 +25,11 @@ class OtoMotoParser:
         Parses motorcycle listings from the current page.
         """
         listings = []
-        # Target the listing containers
         items = page.query_selector_all('article.ooa-zet1mn')
         logger.debug(f"Found {len(items)} potential listing items on the page.")
         
         for item in items:
             try:
-                # Title/Brand/Model
                 title_el = item.query_selector('h2.e123dwbo0 a')
                 brand_model = title_el.inner_text().strip() if title_el else ""
                 listing_href = title_el.get_attribute("href") if title_el else None
@@ -39,11 +37,9 @@ class OtoMotoParser:
                 listing_id_match = re.search(r"ID[0-9A-Za-z]+", listing_url)
                 listing_id = listing_id_match.group(0) if listing_id_match else ""
                 
-                # Price
                 price_el = item.query_selector('h3.eg88ra81')
                 price_text = price_el.inner_text().strip() if price_el else ""
                 
-                # Specs from the dl list
                 mileage_el = item.query_selector('dd[data-parameter="mileage"]')
                 year_el = item.query_selector('dd[data-parameter="year"]')
                 capacity_el = item.query_selector('dd[data-parameter="engine_capacity"]')
@@ -52,22 +48,18 @@ class OtoMotoParser:
                 year_text = year_el.inner_text().strip() if year_el else ""
                 capacity_text = capacity_el.inner_text().strip() if capacity_el else ""
                 
-                # Power is often in the summary text: <p class="e1kj25my0 ooa-nxfgg7">
                 summary_el = item.query_selector('p.e1kj25my0')
                 summary_text = summary_el.inner_text().strip() if summary_el else ""
                 
-                # Extract power from summary (e.g., "279 cm3 • 26 KM • ...")
                 power = 0.0
                 power_match = re.search(r'(\d+)\s*KM', summary_text)
                 if power_match:
                     power = self.parse_numeric(power_match.group(1))
                 
-                # Simple split for brand/model
                 parts = brand_model.split(' ', 1)
                 brand = parts[0] if len(parts) > 0 else "Unknown"
                 model = parts[1] if len(parts) > 1 else "Unknown"
                 
-                # Log found motorcycle only in DEBUG mode
                 logger.debug(f"Found: {brand} {model} | Price: {price_text} | Year: {year_text}")
 
                 listings.append({
